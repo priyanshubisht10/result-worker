@@ -4,10 +4,11 @@ import AppError from "./appError";
 import { PublicKey } from "@solana/web3.js";
 import nacl from "tweetnacl";
 import { decodeUTF8 } from "tweetnacl-util";
+import client from "../services/redis";
 
 async function verifySolution(submission: Submission) {
    // retrieve the public key from the DB using the student ID
-   console.log(submission);
+   // console.log(submission);
    const key = await Key.findOne({rollNo: submission.studentId});
 
    if(!key) {
@@ -34,7 +35,11 @@ async function verifySolution(submission: Submission) {
    //if any of the operation fails, push it to the dead letter queue.
 
    if(result === null) {
-      
+      const resubmission = await client.lPush("resubmissions", JSON.stringify(submission));
+
+      if(!submission) {
+         throw new AppError('Could not moce submission to the dead letter queue!', 500);
+      }
    }
 
    return result;
