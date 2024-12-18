@@ -60,3 +60,7 @@ Create a .env file in the root directory and define the following variables
     Connected to Redis successfully
     ```
 
+## Additional Resources
+
+For a detailed explanation of the architecture, functionality, and use cases of this worker, check out this Medium article by me:  
+[https://priyanshubisht10.medium.com/workers-and-message-queues-18483fe287dd](https://priyanshubisht10.medium.com/workers-and-message-queues-18483fe287dd)  
