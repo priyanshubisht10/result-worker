@@ -39,8 +39,6 @@ Create a .env file in the root directory and define the following variables
     ```env
     DATABASE=
     DATABASE_PASSWORD=
-    QUESTION_DATABASE=
-    QUESTION_DATABASE_PASSWORD=
     ```
 5. Start Redis-Stack in a Docker Container:
     ```bash
